@@ -6,6 +6,8 @@ import numpy as np
 from openvino.inference_engine import IENetwork, IECore
 
 class splite:
+    img_h = 0
+    img_w = 0
     def __init__(self, image, mask, x, y, w, h):
         self.image = image
         self.mask = mask
@@ -20,10 +22,10 @@ class splite:
 
         self.x0 = float(x)
         self.y0 = float(y)
-        self.img_w = 1280
-        self.img_h = 720
-    
+
     def move(self):
+        global g_img_H
+        global g_img_W
         self.x0 = self.x0+self.xs
         self.y0 = self.y0+self.ys
         if self.x0<0:
@@ -32,11 +34,11 @@ class splite:
         if self.y0<0:
             self.y0 = -self.y0
             self.ys = -self.ys
-        if self.x0+self.w>self.img_w:
-            self.x0 = self.x0 - (self.x0+self.w-self.img_w)
+        if self.x0+self.w>splite.img_w:
+            self.x0 = self.x0 - (self.x0+self.w-splite.img_w)
             self.xs = -self.xs
-        if self.y0+self.h>self.img_h:
-            self.y0 = self.y0 - (self.y0+self.h-self.img_h)
+        if self.y0+self.h>splite.img_h:
+            self.y0 = self.y0 - (self.y0+self.h-splite.img_h)
             self.ys = -self.ys
         self.x = int(self.x0)
         self.y = int(self.y0)
@@ -46,8 +48,8 @@ class splite:
         self.y0 = y
         if self.x0<0: self.x0=0
         if self.y0<0: self.y0=0
-        if self.x0+self.w>self.img_w: self.x0=self.img_w-self.w
-        if self.y0+self.h>self.img_h: self.y0=self.img_h-self.h 
+        if self.x0+self.w>splite.img_w: self.x0=splite.img_w-self.w
+        if self.y0+self.h>splite.img_h: self.y0=splite.img_h-self.h
         self.x = int(self.x0)
         self.y = int(self.y0)
 
@@ -169,6 +171,10 @@ def main():
 
     #cap = cv2.VideoCapture('movie4.264')
     cap = cv2.VideoCapture(0)
+
+    _, img = cap.read()
+    splite.img_h = img.shape[0]
+    splite.img_w = img.shape[1]
 
     key = -1
     while key!=27:
