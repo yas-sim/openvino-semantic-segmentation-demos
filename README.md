@@ -9,7 +9,7 @@ Each demo uses the DL models from OpenVINO [Open Model Zoo](https://docs.openvin
 このプロジェクトはセマンティックセグメンテーション・ディープラーニングモデルを使用したデモプログラムを含んでいます。  
 どちらのデモプログラムもOpenVINO [Open Model Zoo](https://docs.openvinotoolkit.org/latest/_models_intel_index.html)のディープラーニングモデルを使用し、推論には[Intel(r) Distribution of OpenVINO(tm) toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html)を使用しています。  
  1. Object Extraction
-   このデモプログラムはセマンティックセグメンテーションを行い、指定したクラスのオブジェクトのマスクイメージとバウンディングボックスを取得します。その後、Inpainting (画像修復)モデルを使用してオブジェクトの背景を補完します。ユーザーはオブジェクトをドラッグして移動することが可能です。  
+   このデモプログラムはセマンティックセグメンテーションを行い、指定したクラスのオブジェクトのマスクイメージとバウンディングボックスを取得します。その後、Inpainting (画像修復)モデルを使用してオブジェクトの背景を補間します。ユーザーはオブジェクトをドラッグして移動することが可能です。  
  2. Background Swapping
    このデモプログラムはセマンティックセグメンテーションを行い人のマスク画像を取得します。プログラムはand-or論理演算を用いて背景を別の画像に差し替えます。  
 
