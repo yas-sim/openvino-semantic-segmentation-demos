@@ -60,17 +60,25 @@ Use `Model Downloader` to download the required models.
         python "%INTEL_OPENVINO_DIR%\deployment_tools\tools\model_downloader\converter.py" --list models.lst
 ```
 
-### 3. Run the demo app
+### 3. Run the demo app (`object-extraction.py`)
 Attach a USB webCam as input of the demo program, then run the program. If you want to use a movie file as an input, you can modify the source code to do it.  
 
-``` sh
-(Linux) python3 gaze-estimation.py
-(Win10) python gaze-estimation.py
-```
 #### Operation: (object-extraction.py only)
 Hit space bar to freeze the frame. The program will perform a semantic segmentation and image inpainting. This may take a couple of seconds (depends on the performance of your PC). Then, you'll see the detected objects flashing periodically. You can drag the objects with the mouse. Hit space bar again to unfreeze and continue.  
 
+``` sh
+(Linux) python3 object-extraction.py
+(Win10) python object-extraction.py
+```
 
+### 3. Run the demo app (`background_swap.py`)
+Attach a USB webCam as input of the demo program, then run the program. If you want to use a movie file as an input, you can modify the source code to do it.  
+The program expects `background.jpg` is in the same directory.  
+
+``` sh
+(Linux) python3 background_swap.py
+(Win10) python background_swap.py
+```
 
 ## Demo Output  
 The application draws the results on the input image.
